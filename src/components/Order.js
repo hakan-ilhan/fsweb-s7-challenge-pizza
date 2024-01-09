@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import images from "../Assets/logo.svg"
 import "./Order.css"
 
+
+const initialForm = {
+    size: "kucuk",
+}
+
 function Order() {
+    const [form, setForm] = useState(initialForm)
+
+    const handleChange = () => {
+
+    }
+
+
+
+
+
     return (
         <section>
             <header className='header'>
@@ -20,7 +35,7 @@ function Order() {
                         <p>85.50TL</p>
                         <div className='yazilar2'>
                             <p>4.9</p>
-                            <p>200</p>
+                            <p>(200)</p>
                         </div>
 
                     </div>
@@ -31,18 +46,18 @@ function Order() {
 
                         <div>
                             <h3>Boyut Seç<span className="kirmizi">*</span></h3>
-                            <input type="radio" name="size" />
+                            <input type="radio" name="size" id="kucuk" value="kucuk" onChange={handleChange} checked={form.size === "kucuk" ? true : false} />
                             <label htmlFor="kucuk">Küçük</label><br /><br />
 
-                            <input type="radio" id="orta" name="size" />
+                            <input type="radio" id="orta" name="size" value="orta" onChange={handleChange} checked={form.size === "orta" ? true : false} />
                             <label htmlFor="orta">Orta</label><br /><br />
 
-                            <input type="radio" id="boyut" name="size" />
+                            <input type="radio" id="buyuk" name="size" value="buyuk" onChange={handleChange} checked={form.size === "buyuk" ? true : false} />
                             <label htmlFor="buyuk">Büyük</label><br /><br />
                         </div>
                         <div className='hamur'>
                             <h3>Hamur Seç<span className="kirmizi">*</span></h3>
-                            <select name="hamur" id="cars">
+                            <select name="hamur" id="hamur">
                                 <option value="ince">İnce</option>
                                 <option value="orta">Orta</option>
                                 <option value="kalin">Kalın</option>
