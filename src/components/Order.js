@@ -4,17 +4,25 @@ import "./Order.css"
 
 
 const initialForm = {
-    size: "kucuk",
+    size: "",
+    hamur: "",
+    malzeme: [],
+
 }
 
 function Order() {
     const [form, setForm] = useState(initialForm)
 
-    const handleChange = () => {
+    const handleChange = (event) => {
+        let { type, name, checked, value } = event.target;
+        value = (type == "checkbox") ? checked : value;
+        setForm({ ...form, [name]: value });
+
+
 
     }
 
-
+    console.log("Boyut:", form.size + " " + "Hamur:", form.hamur);
 
 
 
@@ -57,7 +65,7 @@ function Order() {
                         </div>
                         <div className='hamur'>
                             <h3>Hamur Seç<span className="kirmizi">*</span></h3>
-                            <select name="hamur" id="hamur">
+                            <select name="hamur" id="hamur" value={form.hamur} onChange={handleChange}>
                                 <option value="ince">İnce</option>
                                 <option value="orta">Orta</option>
                                 <option value="kalin">Kalın</option>
@@ -137,7 +145,7 @@ function Order() {
                                 </div>
                             </div>
                             <div>
-                                <button className='end-button'>SİPARİŞ VER</button>
+                                <button disabled className='end-button'>SİPARİŞ VER</button>
                             </div>
                         </div>
                     </div>
