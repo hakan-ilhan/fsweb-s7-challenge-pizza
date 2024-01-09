@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import images from "../Assets/logo.svg"
 import "./Order.css"
 
@@ -7,16 +7,37 @@ const initialForm = {
     size: "",
     hamur: "",
     malzeme: [],
-
+    not: "",
 }
+
+
 
 function Order() {
     const [form, setForm] = useState(initialForm)
+    const [disableButton, setDisableButton] = useState(true);
+    const [selectedMalzemeCount, setSelectedMalzemeCount] = useState(0);
+    const [count, setCount] = useState(1);
+
+    const isOrderValid = () => {
+        return (
+            form.size !== '' &&
+            form.hamur !== '' &&
+            form.malzeme.length >= 4 &&
+            form.malzeme.length <= 10
+        );
+    };
+
+    useEffect(() => {
+        setSelectedMalzemeCount(form.malzeme.length);
+    }, [form.malzeme]);
+
 
     const handleChange = (event) => {
         let { type, name, checked, value, id } = event.target;
 
-        if (type === "radio" || type === "select-one") {
+
+
+        if (type === "radio" || type === "select-one" || name === "not") {
             setForm({ ...form, [name]: value });
 
         } else if (type === "checkbox" && checked) {
@@ -28,12 +49,21 @@ function Order() {
             });
         }
     }
+    const increment = () => {
+
+        setCount(count + 1)
+    };
+    const decrement = () => {
+
+        if (count > 1) {
+            setCount(count - 1);
+        }
+    };
 
 
 
 
-
-    console.log("form", form.malzeme);
+    console.log("Notunuz:", form);
 
 
 
@@ -136,27 +166,27 @@ function Order() {
                     </div>
                     <div className='not'>
                         <p>Sipariş Notu</p>
-                        <textarea name="not" id="not" cols="70" rows="3" placeholder='Siparişine eklemek istediğin bir not var mı?'></textarea>
+                        <textarea onChange={handleChange} value={form.not} name="not" id="not" cols="70" rows="3" placeholder='Siparişine eklemek istediğin bir not var mı?'></textarea>
                         <br /><br /><hr /><br />
                     </div>
                     <div className='yeter'>
                         <div className='omg'>
-                            <button className='button'>-</button><div className='button-div'>1</div><button className='button'>+</button>
+                            <button type='button' onClick={decrement} className='button'>-</button><div className='button-div'>{count}</div><button type='button' onClick={increment} className='button'>+</button>
                         </div>
                         <div className='end'>
                             <div className='siparis-toplami'>
                                 <h3>Sipariş Toplamı</h3>
                                 <div className='secimler-div'>
                                     <p>Seçimler</p>
-                                    <p>25TL</p>
+                                    <p>{count * (selectedMalzemeCount * 5)}TL</p>
                                 </div>
                                 <div className='toplam-div'>
                                     <p>Toplam</p>
-                                    <p>110TL</p>
+                                    <p>{((selectedMalzemeCount * 5) + 85.50) * count}TL</p>
                                 </div>
                             </div>
                             <div>
-                                <button disabled className='end-button'>SİPARİŞ VER</button>
+                                <button disabled={!isOrderValid()} className='end-button'>SİPARİŞ VER</button>
                             </div>
                         </div>
                     </div>
