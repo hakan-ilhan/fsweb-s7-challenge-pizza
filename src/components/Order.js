@@ -14,15 +14,26 @@ function Order() {
     const [form, setForm] = useState(initialForm)
 
     const handleChange = (event) => {
-        let { type, name, checked, value } = event.target;
-        value = (type == "checkbox") ? checked : value;
-        setForm({ ...form, [name]: value });
+        let { type, name, checked, value, id } = event.target;
 
+        if (type === "radio" || type === "select-one") {
+            setForm({ ...form, [name]: value });
 
+        } else if (type === "checkbox" && checked) {
+            setForm({ ...form, [name]: [...form.malzeme, value] });
 
+        } else {
+            setForm({
+                ...form, malzeme: form.malzeme.filter((item) => item !== value)
+            });
+        }
     }
 
-    console.log("Boyut:", form.size + " " + "Hamur:", form.hamur);
+
+
+
+
+    console.log("form", form.malzeme);
 
 
 
@@ -77,48 +88,48 @@ function Order() {
                         <p>En fazla 10 malzeme seçebilirsiniz.5tl</p>
                         <div className="pizza-checkbox-container">
                             <div>
-                                <input type="checkbox" name="malzeme" id="pepperoni" />
+                                <input type="checkbox" name="malzeme" id="pepperoni" value="pepperoni" onChange={handleChange} />
                                 <label htmlFor="pepperoni">Pepperoni</label><br /><br />
 
-                                <input type="checkbox" name="malzeme" id="sosis" />
+                                <input type="checkbox" name="malzeme" id="sosis" value="sosis" onChange={handleChange} />
                                 <label htmlFor="sosis">Sosis</label><br /><br />
 
-                                <input type="checkbox" name="malzeme" id="kanada" />
+                                <input type="checkbox" name="malzeme" id="malzeme" value="kanada" onChange={handleChange} />
                                 <label htmlFor="kanada">Kanada Jambonu</label><br /><br />
 
 
-                                <input type="checkbox" name="malzeme" id="tavuk" />
+                                <input type="checkbox" name="malzeme" id="malzeme" value="tavuk" onChange={handleChange} />
                                 <label htmlFor="tavuk">Tavuk Izgara</label><br /><br />
 
-                                <input type="checkbox" name="malzeme" id="sogan" />
+                                <input type="checkbox" name="malzeme" id="malzeme" value="sogan" onChange={handleChange} />
                                 <label htmlFor="sogan">Soğan</label>
                             </div>
                             <div>
-                                <input type="checkbox" name="malzeme" id="domates" />
+                                <input type="checkbox" name="malzeme" id="malzeme" value="domates" onChange={handleChange} />
                                 <label htmlFor="domates">Domates</label><br /><br />
 
-                                <input type="checkbox" name="malzeme" id="misir" />
+                                <input type="checkbox" name="malzeme" id="malzeme" value="misir" onChange={handleChange} />
                                 <label htmlFor="misir">Mısır</label><br /><br />
 
-                                <input type="checkbox" name="malzeme" id="sucuk" />
+                                <input type="checkbox" name="malzeme" id="malzeme" value="sucuk" onChange={handleChange} />
                                 <label htmlFor="sucuk">Sucuk</label><br /><br />
 
-                                <input type="checkbox" name="malzeme" id="jalepeno" />
+                                <input type="checkbox" name="malzeme" id="malzeme" value="jalepeno" onChange={handleChange} />
                                 <label htmlFor="jalepeno">Jalepeno</label><br /><br />
 
-                                <input type="checkbox" name="malzeme" id="sarimsak" />
+                                <input type="checkbox" name="malzeme" id="malzeme" value="sarimsak" onChange={handleChange} />
                                 <label htmlFor="sarimsak">Sarımsak</label>
                             </div>
                             <div>
-                                <input type="checkbox" name="malzeme" id="biber" />
+                                <input type="checkbox" name="malzeme" id="malzeme" value="biber" onChange={handleChange} />
                                 <label htmlFor="biber">Biber</label><br /><br />
-                                <input type="checkbox" name="malzeme" id="sucuk" />
+                                <input type="checkbox" name="malzeme" id="malzeme" value="sucuk" onChange={handleChange} />
                                 <label htmlFor="sucuk">Sucuk</label><br /><br />
 
-                                <input type="checkbox" name="malzeme" id="ananas" />
+                                <input type="checkbox" name="malzeme" id="malzeme" value="ananas" onChange={handleChange} />
                                 <label htmlFor="annas">Ananas</label><br /><br />
 
-                                <input type="checkbox" name="malzeme" id="kabak" />
+                                <input type="checkbox" name="malzeme" id="malzeme" value="kabak" onChange={handleChange} />
                                 <label htmlFor="kabak">Kabak</label>
                             </div>
                         </div>
