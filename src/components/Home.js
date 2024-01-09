@@ -1,9 +1,22 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import "./Home.css"
+import images from "../Assets/logo.svg";
 
-function Home() {
+function Homepage() {
     return (
-        <div>Home</div>
+        <div class="home">
+            <div class="anasayfa-box">
+                <img src={images}></img>
+                <h1>KOD ACIKTIRIR <br />PIZZA, DOYURUR </h1>
+                <Link to="/order">
+                    <button id="aciktim">ACIKTIM</button>
+                </Link>
+            </div>
+        </div>
+
     )
 }
 
-export default Home
+export default Homepage
+

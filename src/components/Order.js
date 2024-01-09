@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import images from "../Assets/logo.svg"
 import "./Order.css"
+import axios from "axios"
+import { useHistory } from "react-router-dom";
 
 
 const initialForm = {
@@ -17,6 +19,8 @@ function Order() {
     const [disableButton, setDisableButton] = useState(true);
     const [selectedMalzemeCount, setSelectedMalzemeCount] = useState(0);
     const [count, setCount] = useState(1);
+
+    const history = useHistory();
 
     const isOrderValid = () => {
         return (
@@ -60,10 +64,20 @@ function Order() {
         }
     };
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        axios.post("https://reqres.in/api/users", form).then((response) => {
+            console.log("data", response.data)
+            setForm(initialForm)
+        })
+
+        history.push("/succes")
+    }
 
 
 
-    console.log("Notunuz:", form);
+
 
 
 
@@ -90,7 +104,7 @@ function Order() {
                     </div>
                     <p id="info">Frontent Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre.Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezetli bir yemektir..Küçük bir pizzaya bazen pizzetta denir.</p>
                 </div>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className='pizza-order'>
 
                         <div>
@@ -186,7 +200,7 @@ function Order() {
                                 </div>
                             </div>
                             <div>
-                                <button disabled={!isOrderValid()} className='end-button'>SİPARİŞ VER</button>
+                                <button type="submit" disabled={!isOrderValid()} className='end-button'>SİPARİŞ VER</button>
                             </div>
                         </div>
                     </div>
