@@ -1,29 +1,4 @@
 .home {
-    background-image: url("../Assets/mvp-banner.png");
-    height: 100vh;
-    background-repeat: no-repeat;
-    object-fit: cover;
-    text-align: center;
-}
-
-#aciktim {
-    border-radius: 50px;
-    width: 193.27px;
-    height: 56px;
-    background-color: #FDC913;
-    font-family: 'Barlow', sans-serif;
-    border: none;
-    line-height: 56px;
-    font-size: 18px;
-}
-
-.anasayfa-box {
-    display: flex;
-    flex-direction: column;
-
-}
-
-.home {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +8,7 @@
     background-size: cover;
 }
 
-#aciktim {
+#order-pizza {
     border-radius: 50px;
     width: 193.27px;
     height: 56px;

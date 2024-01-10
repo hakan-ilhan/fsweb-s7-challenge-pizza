@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import images from "../Assets/logo.svg"
-import "./Order.css"
+import "./Pizza.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom";
 
@@ -14,7 +14,7 @@ const initialForm = {
 
 
 
-function Order() {
+function Pizza() {
     const [form, setForm] = useState(initialForm)
     const [disableButton, setDisableButton] = useState(true);
     const [selectedMalzemeCount, setSelectedMalzemeCount] = useState(0);
@@ -105,7 +105,7 @@ function Order() {
                     <p id="info">Frontent Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre.Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezetli bir yemektir..Küçük bir pizzaya bazen pizzetta denir.</p>
                 </div>
                 <form onSubmit={handleSubmit}>
-                    <div className='pizza-order'>
+                    <div id='pizza-form'>
 
                         <div>
                             <h3>Boyut Seç<span className="kirmizi">*</span></h3>
@@ -180,7 +180,7 @@ function Order() {
                     </div>
                     <div className='not'>
                         <p>Sipariş Notu</p>
-                        <textarea onChange={handleChange} value={form.not} name="not" id="not" cols="70" rows="3" placeholder='Siparişine eklemek istediğin bir not var mı?'></textarea>
+                        <textarea id="malzemeler-checkbox" onChange={handleChange} value={form.not} name="not" id="not" cols="70" rows="3" placeholder='Siparişine eklemek istediğin bir not var mı?'></textarea>
                         <br /><br /><hr /><br />
                     </div>
                     <div className='yeter'>
@@ -200,7 +200,7 @@ function Order() {
                                 </div>
                             </div>
                             <div>
-                                <button type="submit" disabled={!isOrderValid()} className='end-button'>SİPARİŞ VER</button>
+                                <button type="submit" disabled={!isOrderValid()} id='order-button'>SİPARİŞ VER</button>
                             </div>
                         </div>
                     </div>
@@ -214,4 +214,4 @@ function Order() {
     )
 }
 
-export default Order
+export default Pizza

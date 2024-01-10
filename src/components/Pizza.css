@@ -10,7 +10,7 @@
     color: red
 }
 
-.pizza-order {
+.pizza-form {
     display: flex;
     justify-content: space-around;
 }
@@ -35,7 +35,7 @@
 
 }
 
-.pizza-order {
+#pizza-form {
     display: flex;
     justify-content: space-between;
 }
@@ -107,7 +107,7 @@
     justify-content: space-between;
 }
 
-.end-button {
+#order-button {
     width: 100%;
     height: 62px;
     background-color: #FDC913;
@@ -115,4 +115,15 @@
 
 .siparis-toplami h3 {
     padding-left: 70px;
+}
+
+.selam {
+    padding-top: 30px;
+    margin-right: 420px;
+    color: white;
+
+}
+
+header img {
+    padding-top: 20px;
 }

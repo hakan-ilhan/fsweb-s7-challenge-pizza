@@ -9,8 +9,8 @@ function Homepage() {
             <div class="anasayfa-box">
                 <img src={images}></img>
                 <h1>KOD ACIKTIRIR <br />PIZZA, DOYURUR </h1>
-                <Link to="/order">
-                    <button id="aciktim">ACIKTIM</button>
+                <Link to="/pizza">
+                    <button id="order-pizza">ACIKTIM</button>
                 </Link>
             </div>
         </div>
