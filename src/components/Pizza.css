@@ -24,6 +24,12 @@
     width: 581px;
     height: 138px;
     line-height: 2rem;
+    font-family: 'Barlow', sans-serif;
+
+}
+
+.radioCheck {
+    font-family: 'Barlow', sans-serif;
 }
 
 .form-container {

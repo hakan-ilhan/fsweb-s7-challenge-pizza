@@ -110,7 +110,7 @@ function Pizza() {
                 <form onSubmit={handleSubmit}>
                     <div id='pizza-form'>
 
-                        <div>
+                        <div className='radioCheck'>
                             <h3>Boyut Seç<span className="kirmizi">*</span></h3>
                             <input type="radio" name="size" id="kucuk" value="kucuk" onChange={handleChange} checked={form.size === "kucuk" ? true : false} />
                             <label htmlFor="kucuk">Küçük</label><br /><br />
