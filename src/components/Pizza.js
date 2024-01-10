@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 
 
 const initialForm = {
+    isim: "",
     size: "",
     hamur: "",
     malzeme: [],
@@ -27,7 +28,9 @@ function Pizza() {
             form.size !== '' &&
             form.hamur !== '' &&
             form.malzeme.length >= 4 &&
-            form.malzeme.length <= 10
+            form.malzeme.length <= 10 &&
+            form.isim.length > 2 &&
+            form.isim !== "Gökhan"
         );
     };
 
@@ -41,7 +44,7 @@ function Pizza() {
 
 
 
-        if (type === "radio" || type === "select-one" || name === "not") {
+        if (type === "radio" || type === "select-one" || name === "not" || name === "isim") {
             setForm({ ...form, [name]: value });
 
         } else if (type === "checkbox" && checked) {
@@ -179,6 +182,8 @@ function Pizza() {
                         </div>
                     </div>
                     <div className='not'>
+                        <label htmlFor='isim'>Adınız:</label>
+                        <input id='isim' onChange={handleChange} value={form.isim} name='isim' />
                         <p>Sipariş Notu</p>
                         <textarea id="malzemeler-checkbox" onChange={handleChange} value={form.not} name="not" id="not" cols="70" rows="3" placeholder='Siparişine eklemek istediğin bir not var mı?'></textarea>
                         <br /><br /><hr /><br />
