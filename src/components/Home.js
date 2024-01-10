@@ -6,7 +6,7 @@ import images from "../Assets/logo.svg";
 function Homepage() {
     return (
         <div class="home">
-            <div class="anasayfa-box">
+            <div class="main-box">
                 <img src={images}></img>
                 <h1>KOD ACIKTIRIR <br />PIZZA, DOYURUR </h1>
                 <Link to="/pizza">

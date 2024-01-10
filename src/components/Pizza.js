@@ -190,7 +190,7 @@ function Pizza() {
                     </div>
                     <div className='yeter'>
                         <div className='omg'>
-                            <button type='button' onClick={decrement} className='button'>-</button><div className='button-div'>{count}</div><button type='button' onClick={increment} className='button'>+</button>
+                            <button type='button' placeholder="Lütfen Adınızı Giriniz" onClick={decrement} className='button'>-</button><div className='button-div'>{count}</div><button type='button' onClick={increment} className='button'>+</button>
                         </div>
                         <div className='end'>
                             <div className='siparis-toplami'>
