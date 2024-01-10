@@ -183,14 +183,14 @@ function Pizza() {
                     </div>
                     <div className='not'>
                         <label htmlFor='isim'>Adınız:</label>
-                        <input id='isim' onChange={handleChange} value={form.isim} name='isim' />
+                        <input placeholder="Lütfen Adınızı Giriniz" id='isim' onChange={handleChange} value={form.isim} name='isim' />
                         <p>Sipariş Notu</p>
-                        <textarea id="malzemeler-checkbox" onChange={handleChange} value={form.not} name="not" id="not" cols="70" rows="3" placeholder='Siparişine eklemek istediğin bir not var mı?'></textarea>
+                        <textarea id="malzemeler-checkbox" onChange={handleChange} value={form.not} name="not" cols="70" rows="3" placeholder='Siparişine eklemek istediğin bir not var mı?'></textarea>
                         <br /><br /><hr /><br />
                     </div>
                     <div className='yeter'>
                         <div className='omg'>
-                            <button type='button' placeholder="Lütfen Adınızı Giriniz" onClick={decrement} className='button'>-</button><div className='button-div'>{count}</div><button type='button' onClick={increment} className='button'>+</button>
+                            <button type='button' onClick={decrement} className='button'>-</button><div className='button-div'>{count}</div><button type='button' onClick={increment} className='button'>+</button>
                         </div>
                         <div className='end'>
                             <div className='siparis-toplami'>
