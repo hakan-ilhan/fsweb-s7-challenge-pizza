@@ -13,6 +13,22 @@ const initialForm = {
     not: "",
 }
 
+const malzemeler = [
+    "Pepperoni",
+    "Sosis",
+    "Kanada Jambonu",
+    "Tavuk Izgara",
+    "Soğan",
+    "Domates",
+    "Mısır",
+    "Sucuk",
+    "Jalepeno",
+    "Sarımsak",
+    "Biber",
+    "Sucuk",
+    "Ananas",
+    "Kabak",
+];
 
 
 function Pizza() {
@@ -73,9 +89,10 @@ function Pizza() {
         axios.post("https://reqres.in/api/users", form).then((response) => {
             console.log("data", response.data)
             setForm(initialForm)
+            history.push("/succes")
         })
 
-        history.push("/succes")
+
     }
 
 
@@ -134,51 +151,18 @@ function Pizza() {
                         <h3>Ek malzemeler</h3>
                         <p>En fazla 10 malzeme seçebilirsiniz.5tl</p>
                         <div className="pizza-checkbox-container">
-                            <div>
-                                <input type="checkbox" name="malzeme" id="pepperoni" value="pepperoni" onChange={handleChange} />
-                                <label htmlFor="pepperoni">Pepperoni</label><br /><br />
-
-                                <input type="checkbox" name="malzeme" id="sosis" value="sosis" onChange={handleChange} />
-                                <label htmlFor="sosis">Sosis</label><br /><br />
-
-                                <input type="checkbox" name="malzeme" id="malzeme" value="kanada" onChange={handleChange} />
-                                <label htmlFor="kanada">Kanada Jambonu</label><br /><br />
-
-
-                                <input type="checkbox" name="malzeme" id="malzeme" value="tavuk" onChange={handleChange} />
-                                <label htmlFor="tavuk">Tavuk Izgara</label><br /><br />
-
-                                <input type="checkbox" name="malzeme" id="malzeme" value="sogan" onChange={handleChange} />
-                                <label htmlFor="sogan">Soğan</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="malzeme" id="malzeme" value="domates" onChange={handleChange} />
-                                <label htmlFor="domates">Domates</label><br /><br />
-
-                                <input type="checkbox" name="malzeme" id="malzeme" value="misir" onChange={handleChange} />
-                                <label htmlFor="misir">Mısır</label><br /><br />
-
-                                <input type="checkbox" name="malzeme" id="malzeme" value="sucuk" onChange={handleChange} />
-                                <label htmlFor="sucuk">Sucuk</label><br /><br />
-
-                                <input type="checkbox" name="malzeme" id="malzeme" value="jalepeno" onChange={handleChange} />
-                                <label htmlFor="jalepeno">Jalepeno</label><br /><br />
-
-                                <input type="checkbox" name="malzeme" id="malzeme" value="sarimsak" onChange={handleChange} />
-                                <label htmlFor="sarimsak">Sarımsak</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="malzeme" id="malzeme" value="biber" onChange={handleChange} />
-                                <label htmlFor="biber">Biber</label><br /><br />
-                                <input type="checkbox" name="malzeme" id="malzeme" value="sucuk" onChange={handleChange} />
-                                <label htmlFor="sucuk">Sucuk</label><br /><br />
-
-                                <input type="checkbox" name="malzeme" id="malzeme" value="ananas" onChange={handleChange} />
-                                <label htmlFor="annas">Ananas</label><br /><br />
-
-                                <input type="checkbox" name="malzeme" id="malzeme" value="kabak" onChange={handleChange} />
-                                <label htmlFor="kabak">Kabak</label>
-                            </div>
+                            {malzemeler.map((malzeme, index) => (
+                                <div key={index}>
+                                    <input
+                                        type="checkbox"
+                                        name="malzeme"
+                                        id={malzeme}
+                                        value={malzeme.toLowerCase()}
+                                        onChange={handleChange}
+                                    />
+                                    <label htmlFor={malzeme}>{malzeme}</label><br /><br />
+                                </div>
+                            ))}
                         </div>
                     </div>
                     <div className='not'>
