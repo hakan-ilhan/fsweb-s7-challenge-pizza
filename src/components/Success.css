@@ -1,18 +1,54 @@
 .success-container {
-    background-color: #CE2829;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  color: white;
 }
 
 .success-container div img {
-    margin-top: 100px;
+  margin-top: 60px;
 }
 
-.success-container div p {
-    color: white;
-    text-align: center;
-    font-size: 5rem;
-    margin-top: 250px;
+#lezzet {
+  font-family: "Satisfy", cursive;
+  margin: 0;
+  margin-top: 16px;
+  margin-left: 185px;
+  font-size: 2rem;
+  color: #fdc913;
+}
+
+#sipariş {
+  font-size: 5rem;
+  margin: 0;
+}
+.lezzet-card {
+  margin-top: 55px;
+}
+.infos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 0;
+  width: 275px;
+  margin-top: 45px;
+}
+.price-card {
+  border: 1px solid white;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  width: 350px;
+}
+#secim {
+  display: flex;
+  justify-content: space-around;
+}
+#tutar {
+  display: flex;
+  justify-content: space-around;
 }
