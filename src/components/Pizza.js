@@ -12,6 +12,25 @@ const initialForm = {
     malzeme: [],
     not: "",
 }
+const initialErrors = {
+    isim: false,
+    size: false,
+    hamur: false,
+    malzeme: false,
+  };
+
+  const errorMassages = {
+    isim: "Adınız en az 3 harf içermeli.",
+    size: "Lütfen boyutunuzu seçiniz.",
+    hamur: "Lütfen hamur seçimi yapınız.",
+    malzeme: "En az 4, en fazla 10 ek malzeme seçebilirsiniz."
+  }
+
+
+  
+
+
+
 
 const malzemeler = [
     "Pepperoni",
@@ -44,6 +63,7 @@ function Pizza() {
     const [disableButton, setDisableButton] = useState(true);
     const [selectedMalzemeCount, setSelectedMalzemeCount] = useState(0);
     const [count, setCount] = useState(1);
+    const [error, setError] = useState(initialErrors)
 
     const history = useHistory();
 
@@ -62,6 +82,13 @@ function Pizza() {
         setSelectedMalzemeCount(form.malzeme.length);
     }, [form.malzeme]);
 
+    useEffect(() => {
+        if  ((selectedMalzemeCount > 3) && (selectedMalzemeCount < 11)) {
+            setError({...error, malzeme:false})
+        }  else {
+            setError({...error, malzeme:true})
+        }
+    },[form.malzeme])
 
     const handleChange = (event) => {
         let { type, name, checked, value, id } = event.target;
@@ -79,7 +106,23 @@ function Pizza() {
                 ...form, malzeme: form.malzeme.filter((item) => item !== value)
             });
         }
-    }
+        if (name === "isim" && value.length > 2) {
+            setError({...error, [name]:false})
+        }  else {
+            setError({...error, [name]:true})
+        }
+        
+        
+}
+
+
+  
+
+
+
+
+
+
     const increment = () => {
 
         setCount(count + 1)
@@ -93,6 +136,11 @@ function Pizza() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        const formData = {
+            ...form,
+            adet: count,
+            toplamTutar: (selectedMalzemeCount * 5 + 85.5) * count,
+          };
 
         axios.post("https://reqres.in/api/users", form).then((response) => {
             console.log("data", response.data)
@@ -155,6 +203,7 @@ function Pizza() {
                     <div>
                         <h3>Ek malzemeler</h3>
                         <p>En fazla 10 malzeme seçebilirsiniz.5tl</p>
+                        <p style={{color:"red"}}>{error.malzeme && errorMassages.malzeme}</p>
                         <div className="pizza-checkbox-container">
                             {malzemeler.map((malzeme, index) => (
                                 <div key={index}>
@@ -173,6 +222,7 @@ function Pizza() {
                     <div className='not'>
                         <label htmlFor='isim'>Adınız:</label>
                         <input placeholder="Lütfen Adınızı Giriniz" id='isim' onChange={handleChange} value={form.isim} name='isim' />
+                        <p style={{color:"red"}}>{error.isim && errorMassages.isim}</p>
                         <p>Sipariş Notu</p>
                         <textarea id="malzemeler-checkbox" onChange={handleChange} value={form.not} name="not" cols="70" rows="3" placeholder='Siparişine eklemek istediğin bir not var mı?'></textarea>
                         <br /><br /><hr /><br />
