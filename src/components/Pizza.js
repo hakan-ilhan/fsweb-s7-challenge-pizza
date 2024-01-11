@@ -29,7 +29,15 @@ const malzemeler = [
     "Ananas",
     "Kabak",
 ];
-
+const boyutlar = [
+    "Küçük",
+    "Orta", ,
+    "Büyük"]
+const secim = [
+    "İnce",
+    "Orta",
+    "Kalın"
+]
 
 function Pizza() {
     const [form, setForm] = useState(initialForm)
@@ -126,24 +134,21 @@ function Pizza() {
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div id='pizza-form'>
-
                         <div className='radioCheck'>
                             <h3>Boyut Seç<span className="kirmizi">*</span></h3>
-                            <input type="radio" name="size" id="kucuk" value="kucuk" onChange={handleChange} checked={form.size === "kucuk" ? true : false} />
-                            <label htmlFor="kucuk">Küçük</label><br /><br />
-
-                            <input type="radio" id="orta" name="size" value="orta" onChange={handleChange} checked={form.size === "orta" ? true : false} />
-                            <label htmlFor="orta">Orta</label><br /><br />
-
-                            <input type="radio" id="buyuk" name="size" value="buyuk" onChange={handleChange} checked={form.size === "buyuk" ? true : false} />
-                            <label htmlFor="buyuk">Büyük</label><br /><br />
+                                {boyutlar.map((boyut, index) => (
+                                <div key={index}>
+                                    <input  type="radio" name="size" value={boyut} checked={form.size === boyut} onChange={handleChange}/>
+                                    <label  htmlFor={boyut}>{boyut}</label>
+                                </div>
+                            ))}          
                         </div>
                         <div className='hamur'>
                             <h3>Hamur Seç<span className="kirmizi">*</span></h3>
                             <select name="hamur" id="hamur" value={form.hamur} onChange={handleChange}>
-                                <option value="ince">İnce</option>
-                                <option value="orta">Orta</option>
-                                <option value="kalin">Kalın</option>
+                                {secim.map((item) => (
+                                    <option value={item}>{item}</option>
+                                ))}
                             </select>
                         </div>
                     </div>

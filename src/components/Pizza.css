@@ -19,12 +19,10 @@
   flex-wrap: wrap;
   width: 581px;
   row-gap: 5px;
-  border: 1px solid black;
 }
 
 .pizza-checkbox-container div {
   flex-basis: 150px;
-  border: 1px solid red;
 }
 
 #info {
@@ -36,6 +34,13 @@
 
 .radioCheck {
   font-family: "Barlow", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+.radioCheck h3 {
+  margin-bottom: 0;
 }
 
 .form-container {
