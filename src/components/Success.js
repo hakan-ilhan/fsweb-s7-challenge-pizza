@@ -4,6 +4,10 @@ import logo from "../Assets/logo.svg";
 import images from "../Assets/logo.svg";
 
 function Success({ hakan }) {
+  const remzi = hakan.malzeme.map((item) => {
+    return item;
+  });
+
   return (
     <div className="success-container">
       <div>
@@ -16,9 +20,9 @@ function Success({ hakan }) {
       </div>
       <h2>Position Absolute Acılı Pizza</h2>
       <div className="infos">
-        <p>Boyut:{hakan.size}</p>
-        <p>Hamur:{hakan.hamur}</p>
-        <p>Ek Malzemeler:{hakan.malzeme}</p>
+        <p>{`Boyut: ${hakan.size}`}</p>
+        <p>{`Hamur: ${hakan.hamur}`}</p>
+        <p>{`Ek Malzemeler: ${remzi}`}</p>
       </div>
       <div className="price-card">
         <p>Sipariş Toplamı</p>
