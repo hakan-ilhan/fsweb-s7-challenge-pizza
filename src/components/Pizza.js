@@ -104,6 +104,8 @@ function Pizza({ changeHakan }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!isOrderValid()) return;
+
     const formData = {
       ...form,
       adet: count,
@@ -199,7 +201,7 @@ function Pizza({ changeHakan }) {
             <p>En fazla 10 malzeme seçebilirsiniz.5tl</p>
             {form.malzeme.length > 0 &&
               (form.malzeme.length < 4 || form.malzeme.length > 10) && (
-                <p className="error-message">
+                <p style={{ color: "red" }}>
                   Lütfen en az 4 ve en fazla 10 malzeme seçiniz.
                 </p>
               )}
